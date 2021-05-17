@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ImageRequest;
 use App\Models\Image;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class ImageController extends Controller
@@ -31,12 +32,16 @@ class ImageController extends Controller
         $image = new Image($request->validated());
         $pattern = $image->getImage();
 
+        // Create a unique filename
+        $hash = md5(json_encode($image->getAttributes()));
+        $filename = substr(base_convert($hash, 16, 36), 0, 8);
+
         return response()
             ->streamDownload(
                 function() use ($pattern){
                     echo $pattern->getImageBlob();
                 },
-                'foo.png',
+                $filename . '.' . $pattern->getImageFormat(),
                 ['content-type' => $pattern->getImageMimeType()]
             );
     }
