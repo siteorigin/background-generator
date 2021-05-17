@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
+use App\Casts\ColorCast;
+use App\Image\CustomImagick;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Imagick;
+use \Imagick;
 use ImagickPixel;
 
-class Background extends Model
+class Image extends Model
 {
     use HasFactory;
 
-    static $blendModes = [
+    static array $blendModes = [
         Imagick::COMPOSITE_DEFAULT => 'Default',
-        Imagick::COMPOSITE_ADD => 'Add',
         Imagick::COMPOSITE_ATOP => 'Atop',
         Imagick::COMPOSITE_BLEND => 'Blend',
         Imagick::COMPOSITE_BUMPMAP => 'Bumpmap',
@@ -36,7 +37,6 @@ class Background extends Model
         Imagick::COMPOSITE_IN => 'In',
         Imagick::COMPOSITE_LIGHTEN => 'Lighten',
         Imagick::COMPOSITE_LUMINIZE => 'Luminize',
-        Imagick::COMPOSITE_MINUS => 'Minus',
         Imagick::COMPOSITE_MODULATE => 'Modulate',
         Imagick::COMPOSITE_MULTIPLY => 'Multiply',
         Imagick::COMPOSITE_OUT => 'Out',
@@ -51,12 +51,12 @@ class Background extends Model
         Imagick::COMPOSITE_SRCIN => 'Srcin',
         Imagick::COMPOSITE_SRCOUT => 'Srcout',
         Imagick::COMPOSITE_SRCOVER => 'Srcover',
-        Imagick::COMPOSITE_SUBTRACT => 'Subtract',
         Imagick::COMPOSITE_THRESHOLD => 'Threshold',
         Imagick::COMPOSITE_XOR => 'Xor',
     ];
 
     protected $attributes = [
+        'color' => '#333333',
         'pattern' => 'light_noise_diagonal',
         'blend' => Imagick::COMPOSITE_MULTIPLY,
         'invert' => false,
@@ -64,6 +64,12 @@ class Background extends Model
         'intensity' => 10,
         'noise' => 0,
         'crop' => false,
+    ];
+
+    protected $casts = [
+        'color' => ColorCast::class,
+        'invert' => 'boolean',
+        '2x' => 'boolean',
     ];
 
     protected $fillable = [
@@ -120,12 +126,11 @@ class Background extends Model
     /**
      * Get the pattern for this file.
      *
-     * @return \Imagick
      * @throws \ImagickException
      */
-    public function getPattern(): Imagick
+    public function getPattern(): CustomImagick
     {
-        $pattern = new Imagick();
+        $pattern = new CustomImagick();
         $pattern->readImage( $this->getPatternFilename() );
 
         if($this->attributes['crop']) {
@@ -133,44 +138,23 @@ class Background extends Model
             $pattern->cropImage( intval($width), intval($height), 0, 0 );
         }
 
-        $pattern->setImageOpacity( $this->attributes['intensity'] / 100 );
+        $pattern->setImageAlpha( $this->attributes['intensity'] / 100 );
         if($this->attributes['invert']) $pattern->negateImage( true );
 
         return $pattern;
     }
 
     /**
-     * Get the Noise image for the loaded Pattern.
-     *
-     * @param \Imagick $image
-     * @param int|null $amount
-     * @return \Imagick|null
-     */
-    public function addNoise(Imagick $image, ?int $amount = null): ?Imagick
-    {
-        if(! $amount) return $image;
-
-        $noise = new Imagick();
-        $noise->newImage($image->getImageWidth(), $image->getImageHeight(), new ImagickPixel('#7C7C7C') );
-        $noise->setImageFormat('png');
-        $noise->addNoiseImage( imagick::NOISE_RANDOM );
-        $noise->modulateImage(100,0,100);
-        $noise->setImageOpacity( $amount/100 );
-
-        // Now lets overlay
-        $image->compositeImage( $noise, imagick::COMPOSITE_MULTIPLY, 0,0 );
-
-        return $image;
-    }
-
-    /**
      * Gets an image blob for this Image model
+     *
+     * @throws \ImagickException
+     * @throws \ImagickPixelException
      */
-    public function getImage(): Imagick
+    public function getImage(): CustomImagick
     {
         $pattern = $this->getPattern();
 
-        $bg = new Imagick();
+        $bg = new CustomImagick();
         $bg->newImage(
             $pattern->getImageWidth(),
             $pattern->getImageHeight(),
@@ -178,9 +162,7 @@ class Background extends Model
         );
         $bg->setImageFormat('png');
         $bg->compositeImage( $pattern, (int) $this->attributes['blend'], 0,0 );
-
-        // Add the noise
-        $bg = $this->addNoise($bg, $this->attributes['noise']);
+        $bg->overlayNoise($this->attributes['noise']);
 
         return $bg;
     }
