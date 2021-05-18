@@ -4,7 +4,7 @@ namespace App\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
-class ColorCast implements CastsAttributes
+class HexColorCast implements CastsAttributes
 {
     /**
      * Cast the given value.

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Casts\ColorCast;
+use App\Casts\HexColorCast;
 use App\Image\CustomImagick;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -67,7 +67,7 @@ class Image extends Model
     ];
 
     protected $casts = [
-        'color' => ColorCast::class,
+        'color' => HexColorCast::class,
         'invert' => 'boolean',
         '2x' => 'boolean',
     ];
@@ -75,8 +75,6 @@ class Image extends Model
     protected $fillable = [
         'color', 'pattern', 'blend', 'invert', '2x', 'intensity', 'noise'
     ];
-
-    private Imagick $pattern;
 
     /**
      * @return array All available patterns.
