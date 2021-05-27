@@ -10,12 +10,17 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@vue/compiler-sfc": "^3.0.11",
         "autoprefixer": "^10.2.5",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.2.15",
         "tailwindcss": "^2.1.2",
-        "vue": "^2.6.12"
+        "vue": "^3.0.11",
+        "vue-loader": "^16.2.0"
+    },
+    "dependencies": {
+        "vuex": "^4.0.1"
     }
 }
