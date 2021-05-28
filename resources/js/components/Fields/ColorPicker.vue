@@ -42,3 +42,13 @@ export default {
     }
 }
 </script>
+
+<style>
+input[type=color]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type=color]::-webkit-color-swatch {
+    border-style: none;
+}
+</style>

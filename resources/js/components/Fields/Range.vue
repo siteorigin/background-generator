@@ -40,3 +40,128 @@ export default {
     }
 }
 </script>
+
+<style>
+input[type=range] {
+    -webkit-appearance: none;
+    display: block;
+    width: 100%;
+    margin: 0;
+    height: 11px;
+}
+
+input[type=range]:hover ~ div .thumb {
+    --tw-border-opacity: 1;
+    border-color: rgba(2, 132, 199, var(--tw-border-opacity));
+}
+
+input[type=range]::-moz-focus-outer {
+    border: 0;
+}
+
+input[type=range] {
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 20;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+}
+
+input[type=range] + div .thumb {
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .2s;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 0.375rem;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-radius: 59%;
+    border: none;
+    position: relative;
+    z-index: 1;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 6px;
+}
+
+input[type=range]::-moz-range-thumb {
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    border-radius: 59%;
+    border: none;
+    position: relative;
+    z-index: 2000;
+    -moz-transition: .2s;
+    transition: .2s;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 6px;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: transparent;
+    border: none;
+    border-radius: 2.6px;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: transparent;
+    border: none;
+    border-radius: 2.6px;
+}
+
+input[type=range]::-ms-thumb {
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    border-radius: 59%;
+    border: none;
+    position: relative;
+    z-index: 1;
+    -ms-transition: .2s;
+    transition: .2s;
+}
+
+input[type=range]:hover::-webkit-slider-thumb  {
+    border: none;
+}
+</style>
