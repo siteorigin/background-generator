@@ -1,5 +1,10 @@
 <template>
-    <div :style="style" class="absolute top-0 left-0 w-full h-full"/>
+    <transition name="fade">
+        <div
+            v-background-image="backgroundUrl"
+            class="absolute top-0 left-0 w-full h-full transition duration-700"
+        />
+    </transition>
 </template>
 
 <script>
@@ -13,7 +18,6 @@ export default {
         ]),
         style () {
             return {
-                backgroundColor: this.settings.color,
                 backgroundImage: 'url(' + this.backgroundUrl + ')'
             }
         }

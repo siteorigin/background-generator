@@ -11,7 +11,7 @@
                 <color-picker v-model="form.color"/>
             </div>
             <div class="flex space-x-6 mb-6">
-                <div class="flex-grow">
+                <div class="w-1/2">
                     <div class="mb-3 flex items-center justify-between">
                         <h4 class="text-gray-1000 font-medium text-sm">Pattern</h4>
                         <label class="custom-checkbox text-sm">
@@ -26,10 +26,10 @@
                             Invert
                         </label>
                     </div>
-                    <inline-select v-model="form.pattern" :options="optionsPattern"/>
+                    <inline-select v-model="form.pattern" :options="patterns"/>
                     <range v-model="form.intensity" title="Pattern Intensity"/>
                 </div>
-                <div class="flex-grow">
+                <div class="w-1/2">
                     <h4 class="mb-3 text-gray-1000 font-medium text-sm">Blend Mode</h4>
                     <inline-select v-model="form.blend" :options="blendModes"/>
                     <range v-model="form.noise" title="Noise"/>
@@ -57,10 +57,11 @@
 
 <script>
 import { mapMutations, mapGetters } from 'vuex'
+import _capitalize from 'lodash/capitalize'
 
-import InlineSelect from '~/components/fields/InlineSelect'
-import Range from '~/components/fields/Range'
-import ColorPicker from '~/components/fields/ColorPicker'
+import InlineSelect from '~/components/Fields/InlineSelect'
+import Range from '~/components/Fields/Range'
+import ColorPicker from '~/components/Fields/ColorPicker'
 
 export default {
     components: {
@@ -70,13 +71,7 @@ export default {
     },
 
     data: () => ({
-        backgroundColor: '000000',
-        isFocusedColor: false,
-        optionsPattern: ['Diagonal-noise', 'Diagmonds', 'Diagonal Striped Brick', 'Diagonal Waves', 'Diagonal Waves'],
-        isInvert: false,
-        isGenerate2x: false,
-        form: {},
-        test: null
+        form: {}
     }),
 
     mounted () {
@@ -88,8 +83,17 @@ export default {
             'settings',
             'backgroundUrl'
         ]),
-        blendModes() {
-            return window.config.blendModes
+        blendModes () {
+            return Object.keys(window.config.blendModes).map(key => ({
+                value: key,
+                label: window.config.blendModes[key]
+            }))
+        },
+        patterns () {
+            return window.config.patterns.map(pattern => ({
+                value: pattern,
+                label: _capitalize(pattern.replace(/_/ig, ' '))
+            }))
         }
     },
 
@@ -97,7 +101,6 @@ export default {
         form: {
             deep: true,
             handler () {
-                console.log(123123)
                 this.updatePreview()
             }
         }

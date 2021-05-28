@@ -6,9 +6,9 @@ export const store = createStore({
     state: {
         settings: {
             color: '#eff6ff',
-            // pattern: null,
+            pattern: '45degreee_fabric',
             blend: '2',
-            intensity: 0,
+            intensity: 20,
             noise: 0,
             invert: 0,
             '2x': 0

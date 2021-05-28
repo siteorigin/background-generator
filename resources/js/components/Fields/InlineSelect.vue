@@ -11,10 +11,10 @@
                 v-for="(option, index) in filteredOptions"
                 :key="index"
                 class="text-sm p-2 hover:bg-blue-50 transition duration-300 cursor-pointer"
-                :class="{'bg-blue-100': modelValue === option[0]}"
-                @click="select(option[0])"
+                :class="{'bg-blue-100': modelValue === option.value}"
+                @click="select(option.value)"
             >
-                {{ option[1] }}
+                {{ option.label }}
             </li>
         </ul>
     </div>
@@ -38,15 +38,12 @@ export default {
     }),
 
     computed: {
-        optionsEntries() {
-            return Object.entries(this.options)
-        },
         filteredOptions () {
-            return this.optionsEntries.filter(option => {
+            return this.options.filter(option => {
                 if (!this.search) {
                     return true
                 }
-                const base = option[1].toLowerCase()
+                const base = option.label.toLowerCase()
                 return base.search(this.search.toLowerCase()) > -1
             })
         }
