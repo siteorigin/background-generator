@@ -18,7 +18,7 @@ class ImageController extends Controller
 
         return response($pattern->getImageBlob())
             ->withHeaders([
-                'content-type' => $pattern->getImageMimeType()
+                'content-type' => $pattern->getImageMimeType(),
             ]);
     }
 
@@ -36,7 +36,7 @@ class ImageController extends Controller
 
         return response()
             ->streamDownload(
-                function() use ($pattern){
+                function () use ($pattern) {
                     echo $pattern->getImageBlob();
                 },
                 $filename . '.' . $pattern->getImageFormat(),
