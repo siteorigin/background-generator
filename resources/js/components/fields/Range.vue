@@ -5,7 +5,7 @@
         </h3>
         <div class="flex items-center">
             <div class="relative flex-grow bg-gray-200 h-2 rounded-md">
-                <input type="range" :value="modelValue" min="0" max="50" class="range" @change="update">
+                <input type="range" min="0" max="100" class="range" @input="update">
                 <div class="relative" :style="{'width': progressPercent + '%'}">
                     <span class="block border-sm bg-blue-500 h-2 rounded-md w-full"></span>
                     <span class="block rounded-full bg-white shadow-sm border border-gray-400 absolute w-5 h-5 right-0 -mr-2 thumb"/>
@@ -29,7 +29,7 @@ export default {
 
     computed: {
         progressPercent () {
-            return this.modelValue * 100 / 50
+            return this.modelValue
         }
     },
 

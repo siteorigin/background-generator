@@ -15,24 +15,30 @@
                     <div class="mb-3 flex items-center justify-between">
                         <h4 class="text-gray-1000 font-medium text-sm">Pattern</h4>
                         <label class="custom-checkbox text-sm">
-                            <input type="checkbox" name="position" v-model="isInvert" :value="false">
+                            <input
+                                v-model="form.invert"
+                                type="checkbox"
+                                name="position"
+                                :true-value="1"
+                                :false-value="0"
+                            >
                             <span/>
                             Invert
                         </label>
                     </div>
-                    <inline-select :options="optionsPattern"/>
+                    <inline-select v-model="form.pattern" :options="optionsPattern"/>
                     <range v-model="form.intensity" title="Pattern Intensity"/>
                 </div>
                 <div class="flex-grow">
                     <h4 class="mb-3 text-gray-1000 font-medium text-sm">Blend Mode</h4>
-                    <inline-select :options="optionsBlendMode"/>
+                    <inline-select v-model="form.blend" :options="blendModes"/>
                     <range v-model="form.noise" title="Noise"/>
                 </div>
             </div>
 
             <div class="flex items-center justify-between">
                 <label class="custom-checkbox text-sm">
-                    <input type="checkbox" name="position" v-model="isGenerate2x" :value="false">
+                    <input type="checkbox" v-model="form['2x']" :true-value="1" :false-value="0">
                     <span/>
                     Generate @2X
                 </label>
@@ -67,7 +73,6 @@ export default {
         backgroundColor: '000000',
         isFocusedColor: false,
         optionsPattern: ['Diagonal-noise', 'Diagmonds', 'Diagonal Striped Brick', 'Diagonal Waves', 'Diagonal Waves'],
-        optionsBlendMode: ['Over', 'Add', 'Atop', 'Blend', 'Clear'],
         isInvert: false,
         isGenerate2x: false,
         form: {},
@@ -82,7 +87,10 @@ export default {
         ...mapGetters([
             'settings',
             'backgroundUrl'
-        ])
+        ]),
+        blendModes() {
+            return window.config.blendModes
+        }
     },
 
     watch: {
