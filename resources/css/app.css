@@ -1,3 +1,151 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+input[type=color]::-webkit-color-swatch-wrapper {
+    @apply p-0;
+}
+
+input[type=color]::-webkit-color-swatch {
+    @apply border-none;
+}
+
+/* Range */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 0;
+    height: 11px;
+}
+input[type=range]:hover ~ div .thumb {
+    @apply border-blue-600;
+}
+
+input[type=range]::-moz-focus-outer {
+    border: 0;
+}
+
+input[type=range] {
+    @apply w-full h-full block absolute z-20;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+}
+
+input[type=range] + div .thumb {
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .2s;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: transparent;
+    @apply rounded-md;
+}
+input[type=range]::-webkit-slider-thumb {
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-radius: 59%;
+    border: none;
+    position: relative;
+    z-index: 1;
+    transition: .2s;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 6px;
+}
+input[type=range]::-moz-range-thumb {
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    border-radius: 59%;
+    border: none;
+    position: relative;
+    z-index: 2000;
+    transition: .2s;
+}
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 6px;
+}
+input[type=range]::-ms-fill-lower {
+    background: transparent;
+    border: none;
+    border-radius: 2.6px;
+}
+input[type=range]::-ms-fill-upper {
+    background: transparent;
+    border: none;
+    border-radius: 2.6px;
+}
+input[type=range]::-ms-thumb {
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+    width: 15px;
+    height: 15px;
+    background: transparent;
+    border-radius: 59%;
+    border: none;
+    position: relative;
+    z-index: 1;
+    transition: .2s;
+}
+input[type=range]:hover::-webkit-slider-thumb  {
+    border: none;
+}
+
+/* Checkbox */
+.custom-checkbox input {
+    @apply hidden;
+}
+
+.custom-checkbox {
+    @apply relative flex items-center capitalize cursor-pointer;
+}
+
+.custom-checkbox span {
+    @apply flex items-center justify-center bg-white w-4 h-4 rounded-sm mr-1.5 border border-gray-300 transition duration-500;
+}
+
+.custom-checkbox span:before {
+    content: '';
+    width: 8px;
+    height: 6px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7px' height='5px' viewBox='0 0 7 5' version='1.1'%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg transform='translate(-870.000000, -518.000000)' fill='%23FFFFFF'%3E%3Cg transform='translate(825.000000, 236.000000)'%3E%3Cg transform='translate(29.000000, 237.000000)'%3E%3Cg transform='translate(14.000000, 32.000000)'%3E%3Cpath d='M5.46130913,17.7625279 C5.19473336,18.0291036 4.76316696,18.0291036 4.49727297,17.7625279 L3.05053696,16.3164736 C2.78464298,16.0505796 2.78464298,15.6183315 3.05053696,15.3524375 C3.31711273,15.0858617 3.74867913,15.0858617 4.01457312,15.3524375 L4.97929105,16.3164736 L7.38938144,13.9063832 C7.6559572,13.6398075 8.0875236,13.6398075 8.35341759,13.9063832 C8.61999336,14.1722772 8.61999336,14.6038436 8.35341759,14.8704194 L5.46130913,17.7625279 Z' id='tick-icon'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+    background-size: cover;
+    @apply opacity-0 transition duration-200;
+}
+
+.custom-checkbox:hover span {
+    @apply border-blue-600;
+}
+
+.custom-checkbox input:checked ~ span {
+    @apply border-blue-600 bg-blue-600;
+}
+
+.custom-checkbox input:checked ~ span:before {
+    @apply opacity-100;
+}
