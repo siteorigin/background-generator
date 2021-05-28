@@ -8,10 +8,12 @@ import { mapGetters } from 'vuex'
 export default {
     computed: {
         ...mapGetters([
+            'settings',
             'backgroundUrl'
         ]),
         style () {
             return {
+                backgroundColor: this.settings.color,
                 backgroundImage: 'url(' + this.backgroundUrl + ')'
             }
         }

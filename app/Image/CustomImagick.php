@@ -18,7 +18,7 @@ class CustomImagick extends Imagick
         $noise->setImageFormat('png');
         $noise->addNoiseImage(imagick::NOISE_RANDOM);
         $noise->modulateImage(100, 0, 100);
-        $noise->setImageOpacity($amount / 100);
+        $noise->setImageAlpha($amount / 100);
 
         // Now lets overlay
         $this->compositeImage($noise, imagick::COMPOSITE_MULTIPLY, 0, 0);

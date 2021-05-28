@@ -7,8 +7,8 @@ export const store = createStore({
             color: '#eff6ff',
             // pattern: null,
             // blendMode: null,
-            // patternIntensity: null,
-            // // noise: null,
+            intensity: 0,
+            noise: 0,
             // invertPattern: null,
             // size: false
         }

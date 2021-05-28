@@ -21,12 +21,12 @@
                         </label>
                     </div>
                     <inline-select :options="optionsPattern"/>
-                    <range title="Pattern Intensity"/>
+                    <range v-model="form.intensity" title="Pattern Intensity"/>
                 </div>
                 <div class="flex-grow">
                     <h4 class="mb-3 text-gray-1000 font-medium text-sm">Blend Mode</h4>
                     <inline-select :options="optionsBlendMode"/>
-                    <range title="Noise"/>
+                    <range v-model="form.noise" title="Noise"/>
                 </div>
             </div>
 
