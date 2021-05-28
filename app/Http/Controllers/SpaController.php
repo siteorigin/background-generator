@@ -10,7 +10,7 @@ class SpaController extends Controller
     public function __invoke(): View
     {
         return view('app', [
-            'config' => $this->getConfig()
+            'config' => $this->getConfig(),
         ]);
     }
 
@@ -18,7 +18,7 @@ class SpaController extends Controller
     {
         return [
             'patterns' => Image::getPatterns(),
-            'blendModes' => Image::$blendModes
+            'blendModes' => Image::$blendModes,
         ];
     }
 }
