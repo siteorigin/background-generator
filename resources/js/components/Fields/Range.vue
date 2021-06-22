@@ -22,20 +22,20 @@ export default {
             type: String,
             required: true
         },
-        modelValue: {
+        value: {
             default: null
         }
     },
 
     computed: {
         progressPercent () {
-            return this.modelValue
+            return this.value
         }
     },
 
     methods: {
         update (event) {
-            this.$emit('update:modelValue', event.target.value)
+            this.$emit('input', event.target.value)
         }
     }
 }

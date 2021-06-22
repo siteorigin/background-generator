@@ -4,7 +4,7 @@
         :class="{'border-blue-600': isFocused}"
     >
         <input
-            :value="modelValue"
+            :value="value"
             type="color"
             class="w-6 h-6 rounded-sm mr-3 border border-gray-300"
             @focus="isFocused = true"
@@ -12,7 +12,7 @@
             @input="update"
         >
         <input
-            :value="modelValue"
+            :value="value"
             class="text-xs text-gray-1000 font-medium focus:outline-none flex-grow h-6"
             @focus="isFocusedColor = true"
             @blur="isFocusedColor = false"
@@ -24,7 +24,7 @@
 <script>
 export default {
     props: {
-        modelValue: {
+        value: {
             type: String,
             default: null
         }
@@ -37,7 +37,7 @@ export default {
 
     methods: {
         update (event) {
-            this.$emit('update:modelValue', event.target.value)
+            this.$emit('input', event.target.value)
         }
     }
 }

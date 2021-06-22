@@ -11,7 +11,7 @@
                 v-for="(option, index) in filteredOptions"
                 :key="index"
                 class="text-sm p-2 hover:bg-blue-50 transition duration-300 cursor-pointer"
-                :class="{'bg-blue-100': modelValue === option.value}"
+                :class="{'bg-blue-100': value === option.value}"
                 @click="select(option.value)"
             >
                 {{ option.label }}
@@ -23,11 +23,11 @@
 <script>
 export default {
     props: {
-        modelValue: {
+        value: {
             default: null
         },
         options: {
-            type: Object,
+            type: Array,
             default: null,
             required: true
         }
@@ -51,7 +51,7 @@ export default {
 
     methods: {
         select (value) {
-            this.$emit('update:modelValue', value)
+            this.$emit('input', value)
         }
     }
 }

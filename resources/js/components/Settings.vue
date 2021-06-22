@@ -30,7 +30,7 @@
                     <range v-model="form.intensity" title="Pattern Intensity"/>
                 </div>
                 <div class="w-1/2">
-                    <h4 class="mb-3 text-gray-1000 font-medium text-sm">Blend Mode</h4>
+                    <h4 class="mb-3 text-gray-1000 font-medium text-sm">Overlay</h4>
                     <inline-select v-model="form.blend" :options="blendModes"/>
                     <range v-model="form.noise" title="Noise"/>
                 </div>

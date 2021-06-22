@@ -14,7 +14,7 @@ const config = require('./webpack.config')
 
 mix.webpackConfig(config)
     .js('resources/js/app.js', 'public/js')
-    .vue()
+    .vue({ version: 2 })
     .postCss('resources/css/app.css', 'public/css', [
         require('tailwindcss'),
     ])
