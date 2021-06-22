@@ -5,10 +5,11 @@
         </h3>
         <div class="flex items-center">
             <div class="relative flex-grow bg-gray-200 h-2 rounded-md">
-                <input type="range" min="0" max="100" class="range" @input="update">
-                <div class="relative" :style="{'width': progressPercent + '%'}">
+                <input v-model="percent" type="range" min="0" max="100" class="range" @change="update">
+                <div class="relative" :style="{'width': percent + '%'}">
                     <span class="block border-sm bg-blue-500 h-2 rounded-md w-full"></span>
-                    <span class="block rounded-full bg-white shadow-sm border border-gray-400 absolute w-5 h-5 right-0 -mr-2 thumb"/>
+                    <span
+                        class="block rounded-full bg-white shadow-sm border border-gray-400 absolute w-5 h-5 right-0 -mr-2 thumb"/>
                 </div>
             </div>
         </div>
@@ -27,9 +28,17 @@ export default {
         }
     },
 
-    computed: {
-        progressPercent () {
-            return this.value
+    data: () => ({
+        percent: 0
+    }),
+
+    mounted () {
+        this.percent = this.value ? this.value : 0
+    },
+
+    watch: {
+        value () {
+            this.percent = this.value
         }
     },
 
@@ -161,7 +170,7 @@ input[type=range]::-ms-thumb {
     transition: .2s;
 }
 
-input[type=range]:hover::-webkit-slider-thumb  {
+input[type=range]:hover::-webkit-slider-thumb {
     border: none;
 }
 </style>

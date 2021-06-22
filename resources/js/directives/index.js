@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 Vue.directive('background-image', {
-    update (el, binding) {
+    componentUpdated (el, binding) {
         el.style.opacity = '0'
 
         const image = document.createElement('img')
