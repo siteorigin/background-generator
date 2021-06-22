@@ -1,5 +1,5 @@
 <template>
-    <div v-background-image="backgroundUrl" class="absolute top-0 left-0 w-full h-full transition duration-700"/>
+    <div v-background-image="backgroundUrl" class="absolute top-0 left-0 w-full h-full transition duration-200"/>
 </template>
 
 <script>

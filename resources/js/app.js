@@ -1,23 +1,14 @@
-import { createApp } from 'vue'
-import { store } from './store'
-
+import Vue from 'vue'
 import App from './App.vue'
+import store from './store'
 
-const app = createApp(App)
+import './plugins'
+import './directives'
 
-app.use(store)
+Vue.config.productionTip = false
 
-app.directive('background-image', {
-    updated (el, binding) {
-        el.style.opacity = 0
-
-        const image = document.createElement('img')
-        image.addEventListener('load', () => {
-            el.style.opacity = 1
-            el.style.backgroundImage = 'url(' + binding.value + ')'
-        })
-        image.src = binding.value
-    }
+new Vue({
+    el: '#app',
+    store,
+    render: h => h(App)
 })
-
-app.mount('#app')

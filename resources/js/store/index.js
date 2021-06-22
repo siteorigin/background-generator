@@ -1,8 +1,11 @@
-import { createStore } from 'vuex'
+import Vue from 'vue'
+import Vuex from 'vuex'
 import _debounce from 'lodash/debounce'
 import queryString from 'query-string'
 
-export const store = createStore({
+Vue.use(Vuex)
+
+export default new Vuex.Store({
     state: {
         settings: {
             color: '#eff6ff',
@@ -19,6 +22,10 @@ export const store = createStore({
         settings: state => state.settings,
         backgroundUrl: (state) => {
             const params = queryString.stringify(state.settings)
+            return `/api/image?${params}`
+        },
+        backgroundUrlWithOptions: (state) => (options = {}) => {
+            const params = queryString.stringify(Object.assign({}, state.settings, options))
             return `/api/image?${params}`
         }
     },

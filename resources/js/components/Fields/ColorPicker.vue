@@ -1,43 +1,46 @@
 <template>
-    <div
-        class="rounded-md h-10 w-full border border-gray-300 flex items-center px-2 relative transition duration-300"
-        :class="{'border-blue-600': isFocused}"
-    >
+    <div class="relative rounded-md" :style="{backgroundColor: value}">
         <input
-            :value="modelValue"
+            :value="value"
             type="color"
-            class="w-6 h-6 rounded-sm mr-3 border border-gray-300"
-            @focus="isFocused = true"
-            @blur="isFocused = false"
+            class="rounded-md h-10 w-full bg-transparent border border-gray-300 flex items-center px-2 relative transition duration-300"
             @input="update"
+            ref="inputColor"
         >
-        <input
-            :value="modelValue"
-            class="text-xs text-gray-1000 font-medium focus:outline-none flex-grow h-6"
-            @focus="isFocusedColor = true"
-            @blur="isFocusedColor = false"
-            @input="update"
+        <div
+            class="text-center absolute w-full h-full top-0 left-0 flex justify-center items-center cursor-pointer text-sm"
+            :class="{'text-black': isColorLight, 'text-white': !isColorLight}"
+            @click="openColorPicker"
         >
+            <span>{{ value || 'Color' }}</span>
+        </div>
     </div>
 </template>
 
 <script>
+import { hexIsLight } from '~/utils'
+
 export default {
     props: {
-        modelValue: {
+        value: {
             type: String,
             default: null
         }
     },
 
-    data: () => ({
-        color: null,
-        isFocused: false
-    }),
+    computed: {
+        isColorLight () {
+            if (!this.value) return true
+            return hexIsLight(this.value)
+        }
+    },
 
     methods: {
         update (event) {
-            this.$emit('update:modelValue', event.target.value)
+            this.$emit('input', event.target.value)
+        },
+        openColorPicker () {
+            this.$refs.inputColor.click()
         }
     }
 }
