@@ -6,24 +6,31 @@
             class="p-2 rounded-t-md border border-gray-300 w-full h-10 block text-sm outline-none focus:outline-none focus:border-blue-600 transition duration-300"
             placeholder="Filter"
         >
+
         <ul class=" border-b border-l border-r border-gray-300 rounded-b-md h-137 overflow-y-scroll">
-            <li
+            <item
                 v-for="(option, index) in filteredOptions"
                 :key="index"
-                class="text-sm p-2 hover:bg-blue-50 transition duration-300 cursor-pointer"
-                :class="{'bg-blue-100': value === option.value}"
-                @click="select(option.value)"
-            >
-                {{ option.label }}
-            </li>
+                :option="option"
+                :value="value"
+                :type="type"
+                @select="select"
+            />
         </ul>
     </div>
 </template>
 
 <script>
+import Item from './Item'
+
 export default {
     props: {
         value: {
+            type: String|Number,
+            default: null
+        },
+        type: {
+            type: String,
             default: null
         },
         options: {
@@ -31,6 +38,10 @@ export default {
             default: null,
             required: true
         }
+    },
+
+    components: {
+        Item
     },
 
     data: () => ({

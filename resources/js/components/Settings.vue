@@ -1,13 +1,7 @@
 <template>
     <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl sm:my-8 sm:max-w-lg sm:w-full">
-        <div class="flex justify-between items-center border-b border-gray-100 px-4 py-3 sm:px-6 sm:py-3">
-            Settings
-            <a href="#" class="text-gray-500">Help</a>
-        </div>
-
-        <div class="px-4 pt-6 pb-4 sm:p-6">
+        <div class="px-4 pb-4 sm:p-6">
             <div class="mb-6">
-                <h4 class="mb-3 text-gray-1000 font-medium text-sm">Background color</h4>
                 <color-picker v-model="form.color"/>
             </div>
             <div class="flex space-x-6 mb-6">
@@ -26,29 +20,43 @@
                             Invert
                         </label>
                     </div>
-                    <inline-select v-model="form.pattern" :options="patterns"/>
+                    <inline-select v-model="form.pattern" :options="patterns" type="pattern"/>
                     <range v-model="form.intensity" title="Pattern Intensity"/>
                 </div>
                 <div class="w-1/2">
                     <h4 class="mb-3 text-gray-1000 font-medium text-sm">Overlay</h4>
-                    <inline-select v-model="form.blend" :options="blendModes"/>
+                    <inline-select v-model="form.blend" :options="blendModes" type="blend"/>
                     <range v-model="form.noise" title="Noise"/>
                 </div>
             </div>
 
-            <div class="flex items-center justify-between">
-                <label class="custom-checkbox text-sm">
-                    <input type="checkbox" v-model="form['2x']" :true-value="1" :false-value="0">
-                    <span/>
-                    Generate @2X
-                </label>
+            <div class="flex items-center justify-center">
                 <a
                     :href="backgroundUrl"
-                    class="bg-blue-500 hover:bg-blue-700 font-medium text-white py-2 px-4 rounded text-sm"
+                    class="bg-blue-500 hover:bg-blue-700 font-medium text-white py-2 px-4 rounded text-sm mr-5"
                     download
                 >
                     Download image
                 </a>
+                <label class="custom-checkbox text-sm">
+                    <input type="checkbox" v-model="form['2x']" :true-value="1" :false-value="0">
+                    <span/>
+                    @2X
+                </label>
+            </div>
+        </div>
+        <div class="border-t border-gray-100 px-4 py-3 sm:px-6 sm:py-3">
+            <div class="flex flex-no-wrap overflow-y-scroll items-center space-x-4">
+                <button v-for="i in 4" class="rounded-sm border border-gray-100 w-8 h-8 flex-shrink-0">
+                    <img
+                        src="/api/image?2x=0&amp;blend=2&amp;color=%23eff6ff&amp;intensity=20&amp;invert=0&amp;noise=0&amp;pattern=45degreee_fabric"
+                        class="w-full h-full">
+                </button>
+                <button class="focus:outline-none">
+                    <svg class="h-7 w-7 text-blue-500 hover:text-blue-700" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 
+import './plugins'
 import './directives'
 
 Vue.config.productionTip = false

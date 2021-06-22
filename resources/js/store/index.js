@@ -23,6 +23,10 @@ export default new Vuex.Store({
         backgroundUrl: (state) => {
             const params = queryString.stringify(state.settings)
             return `/api/image?${params}`
+        },
+        backgroundUrlWithOptions: (state) => (options = {}) => {
+            const params = queryString.stringify(Object.assign({}, state.settings, options))
+            return `/api/image?${params}`
         }
     },
 

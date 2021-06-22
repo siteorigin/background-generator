@@ -1,11 +1,11 @@
 <template>
     <div class="grid grid-rows-layout grid-cols-1 h-screen">
-        <header class="text-center p-3">Background Generator</header>
+        <app-header/>
         <main class="bg-blue-100 overflow-hidden flex relative items-center justify-center row-start-2 row-end-3">
             <preview/>
             <settings/>
         </main>
-        <footer-component/>
+        <app-footer/>
     </div>
 </template>
 
@@ -13,13 +13,15 @@
 import Preview from '~/components/Preview'
 import Settings from '~/components/Settings'
 
-import FooterComponent from '~/components/Footer'
+import AppHeader from '~/components/Header'
+import AppFooter from '~/components/Footer'
 
 export default {
     components: {
         Settings,
         Preview,
-        FooterComponent
+        AppHeader,
+        AppFooter
     }
 }
 </script>
