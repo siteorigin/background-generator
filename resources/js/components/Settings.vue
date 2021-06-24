@@ -35,6 +35,7 @@
                     :href="backgroundUrl"
                     class="bg-blue-500 hover:bg-blue-700 font-medium text-white py-2 px-4 rounded text-sm mr-5"
                     download
+                    @click.prevent="download"
                 >
                     Download image
                 </a>
@@ -54,7 +55,9 @@
                 </button>
                 <button class="focus:outline-none">
                     <svg class="h-7 w-7 text-blue-500 hover:text-blue-700" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                              clip-rule="evenodd"/>
                     </svg>
                 </button>
             </div>
@@ -101,6 +104,9 @@ export default {
                 value: pattern,
                 label: _capitalize(pattern.replace(/_/ig, ' '))
             }))
+        },
+        toastHtml() {
+            return `<div class="flex text-sm"><img src="${this.backgroundUrl}" class="w-20 h-20 mr-3" alt="">Your pattern is downloading! The Download should start shortly.</div>`
         }
     },
 
@@ -119,6 +125,11 @@ export default {
         ]),
         updatePreview () {
             this.updateSettings(this.form)
+        },
+        download () {
+            this.$snotify.html(this.toastHtml, {
+                position: 'leftTop'
+            })
         }
     }
 }

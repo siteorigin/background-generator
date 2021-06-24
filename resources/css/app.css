@@ -3,3 +3,4 @@
 @tailwind utilities;
 
 @import "common.css";
+@import "~vue-snotify/styles/material";

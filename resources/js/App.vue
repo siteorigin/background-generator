@@ -6,6 +6,7 @@
             <settings/>
         </main>
         <app-footer/>
+        <vue-snotify/>
     </div>
 </template>
 
