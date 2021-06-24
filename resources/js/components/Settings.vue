@@ -35,7 +35,7 @@
                     :href="backgroundUrl"
                     class="bg-blue-500 hover:bg-blue-700 font-medium text-white py-2 px-4 rounded text-sm mr-5"
                     download
-                    @click.prevent="download"
+                    @click="download"
                 >
                     Download image
                 </a>
@@ -72,6 +72,7 @@ import _capitalize from 'lodash/capitalize'
 import InlineSelect from '~/components/Fields/InlineSelect'
 import Range from '~/components/Fields/Range'
 import ColorPicker from '~/components/Fields/ColorPicker'
+import { downloadNotification } from '~/notifications'
 
 export default {
     components: {
@@ -104,9 +105,6 @@ export default {
                 value: pattern,
                 label: _capitalize(pattern.replace(/_/ig, ' '))
             }))
-        },
-        toastHtml() {
-            return `<div class="flex text-sm"><img src="${this.backgroundUrl}" class="w-20 h-20 mr-3" alt="">Your pattern is downloading! The Download should start shortly.</div>`
         }
     },
 
@@ -127,7 +125,7 @@ export default {
             this.updateSettings(this.form)
         },
         download () {
-            this.$snotify.html(this.toastHtml, {
+            this.$snotify.html(downloadNotification(this.backgroundUrl), {
                 position: 'leftTop'
             })
         }

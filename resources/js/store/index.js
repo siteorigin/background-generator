@@ -15,7 +15,8 @@ export default new Vuex.Store({
             noise: 0,
             invert: 0,
             '2x': 0
-        }
+        },
+        patterns: []
     },
 
     getters: {
@@ -27,7 +28,8 @@ export default new Vuex.Store({
         backgroundUrlWithOptions: (state) => (options = {}) => {
             const params = queryString.stringify(Object.assign({}, state.settings, options))
             return `/api/image?${params}`
-        }
+        },
+        patterns: state => state.patterns
     },
 
     mutations: {
