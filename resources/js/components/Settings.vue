@@ -46,22 +46,8 @@
                 </label>
             </div>
         </div>
-        <div class="border-t border-gray-100 px-4 py-3 sm:px-6 sm:py-3">
-            <div class="flex flex-no-wrap overflow-y-scroll items-center space-x-4">
-                <button v-for="i in 4" class="rounded-sm border border-gray-100 w-8 h-8 flex-shrink-0">
-                    <img
-                        src="/api/image?2x=0&amp;blend=2&amp;color=%23eff6ff&amp;intensity=20&amp;invert=0&amp;noise=0&amp;pattern=45degreee_fabric"
-                        class="w-full h-full">
-                </button>
-                <button class="focus:outline-none">
-                    <svg class="h-7 w-7 text-blue-500 hover:text-blue-700" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                              clip-rule="evenodd"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
+
+        <patterns/>
     </div>
 </template>
 
@@ -72,13 +58,15 @@ import _capitalize from 'lodash/capitalize'
 import InlineSelect from '~/components/Fields/InlineSelect'
 import Range from '~/components/Fields/Range'
 import ColorPicker from '~/components/Fields/ColorPicker'
+import Patterns from '~/components/Patterns'
 import { downloadNotification } from '~/notifications'
 
 export default {
     components: {
         InlineSelect,
         Range,
-        ColorPicker
+        ColorPicker,
+        Patterns
     },
 
     data: () => ({
@@ -86,7 +74,7 @@ export default {
     }),
 
     mounted () {
-        this.form = Object.assign({}, this.settings)
+        this.clear()
     },
 
     computed: {
@@ -114,6 +102,12 @@ export default {
             handler () {
                 this.updatePreview()
             }
+        },
+        settings: {
+            deep: true,
+            handler () {
+                this.clear()
+            }
         }
     },
 
@@ -128,6 +122,9 @@ export default {
             this.$snotify.html(downloadNotification(this.backgroundUrl), {
                 position: 'leftTop'
             })
+        },
+        clear () {
+            this.form = Object.assign({}, this.settings)
         }
     }
 }
