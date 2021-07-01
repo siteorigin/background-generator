@@ -1,10 +1,13 @@
 <template>
     <li
-        class="text-sm p-2 hover:bg-blue-50 transition duration-300 cursor-pointer flex items-center"
-        :class="{'bg-blue-100': value === option.value}"
+        class="hover:bg-blue-100 border-gray-400 border transition duration-300 cursor-pointer flex items-center overflow-hidden h-16 rounded-lg mb-4 text-gray-500"
+        :class="{'border-blue-200 bg-blue-100 font-medium': value === option.value}"
         @click="select(option.value)"
     >
-        <img v-lazy="backgroundUrl" class="w-5 h-5 mr-3" :alt="option.label"/>
+        <img v-lazy="backgroundUrl"
+             class="w-16 h-16 mr-3 border-r border-gray-400"
+             :class="{'border-blue-200': value === option.value}"
+             :alt="option.label"/>
         {{ option.label }}
     </li>
 </template>

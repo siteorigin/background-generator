@@ -1,22 +1,24 @@
 <template>
-    <div class="border-t border-gray-100 px-4 py-3 sm:px-6 sm:py-3">
-        <div class="flex flex-no-wrap overflow-y-scroll items-center space-x-4">
-            <button
-                v-for="(pattern, index) in patterns"
-                :key="index"
-                class="rounded-sm border border-gray-100 w-8 h-8 flex-shrink-0"
-                @click="selectPattern(pattern)"
-            >
-                <img :src="pattern.backgroundUrl" class="w-full h-full" alt="Preview">
-            </button>
-            <button class="focus:outline-none" @click="savePattern">
-                <svg class="h-7 w-7 text-blue-500 hover:text-blue-700" viewBox="0 0 20 20" fill="currentColor">
-                    <path
-                        fill-rule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                        clip-rule="evenodd"
-                    />
-                </svg>
+    <div class="px-8 py-7 shadow-lg">
+        <h2 class="tect-sm text-gray-900 font-medium uppercase mb-1">Saved steps</h2>
+        <div class="flex flex-no-wrap overflow-x-scroll items-center space-x-3 py-2.5">
+            <div v-for="(pattern, index) in patterns"
+                 :key="index"
+                 class="relative group  w-12 h-12">
+
+                <button class="w-5 h-5 rounded-full bg-red-100 absolute -top-2.5 -right-2.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
+                    <img src="/images/x.svg">
+                </button>
+                <button
+                    class="rounded-lg w-12 h-12 flex-shrink-0 border border-gray-400 transition duration-200 group-hover:border-blue-200"
+                    @click="selectPattern(pattern)"
+                >
+                    <img :src="pattern.backgroundUrl" class="w-full h-full rounded-lg" alt="Preview">
+                </button>
+            </div>
+            <hr v-if="patterns.length" class="w-px h-6 bg-gray-100"/>
+            <button class="focus:outline-none w-12 h-12 bg-blue-200 border border-blue-200 rounded-lg flex items-center justify-center" @click="savePattern">
+                <img src="/images/plus.svg">
             </button>
         </div>
     </div>

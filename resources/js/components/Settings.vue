@@ -1,14 +1,14 @@
 <template>
-    <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl sm:my-8 sm:max-w-lg sm:w-full">
-        <div class="px-4 pb-4 sm:p-6">
-            <div class="mb-6">
+    <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-md sm:max-w-744 sm:w-full">
+        <div class="p-5 sm:px-8 sm:py-10">
+            <div class="mb-10">
                 <color-picker v-model="form.color"/>
             </div>
-            <div class="flex space-x-6 mb-6">
+            <div class="flex space-x-6 mb-10">
                 <div class="w-1/2">
                     <div class="mb-3 flex items-center justify-between">
-                        <h4 class="text-gray-1000 font-medium text-sm">Pattern</h4>
-                        <label class="custom-checkbox text-sm">
+                        <h4 class="text-gray-900 font-medium uppercase">Pattern</h4>
+                        <label class="custom-checkbox text-13 text-gray-300">
                             <input
                                 v-model="form.invert"
                                 type="checkbox"
@@ -20,12 +20,12 @@
                             Invert
                         </label>
                     </div>
-                    <inline-select v-model="form.pattern" :options="patterns" type="pattern"/>
+                    <inline-select v-model="form.pattern" :options="patterns" type="pattern" placeholder="Search patterns..."/>
                     <range v-model="form.intensity" title="Pattern Intensity"/>
                 </div>
                 <div class="w-1/2">
-                    <h4 class="mb-3 text-gray-1000 font-medium text-sm">Overlay</h4>
-                    <inline-select v-model="form.blend" :options="blendModes" type="blend"/>
+                    <h4 class="text-gray-900 font-medium uppercase mb-3">Overlay</h4>
+                    <inline-select v-model="form.blend" :options="blendModes" type="blend" placeholder="Search overlay filters..."/>
                     <range v-model="form.noise" title="Noise"/>
                 </div>
             </div>
@@ -33,17 +33,16 @@
             <div class="flex items-center justify-center">
                 <a
                     :href="backgroundUrl"
-                    class="bg-blue-500 hover:bg-blue-700 font-medium text-white py-2 px-4 rounded text-sm mr-5"
+                    class="bg-blue-200 hover:bg-blue-700 font-medium shadow-sm text-white h-12 flex items-center rounded-l-lg px-4"
                     download
                     @click="download"
                 >
-                    Download image
+                    <img src="/images/down.svg" class="mr-2.5">
+                    Download  @1x image
                 </a>
-                <label class="custom-checkbox text-sm">
-                    <input type="checkbox" v-model="form['2x']" :true-value="1" :false-value="0">
-                    <span/>
-                    @2X
-                </label>
+                <button class="border-l border-white rounded-r-lg flex items-center justify-center w-10 h-12 bg-blue-200">
+                    <img src="/images/arrow-down.svg">
+                </button>
             </div>
         </div>
 
@@ -120,7 +119,7 @@ export default {
         },
         download () {
             this.$snotify.html(downloadNotification(this.backgroundUrl), {
-                position: 'leftTop'
+                position: 'centerTop'
             })
         },
         clear () {

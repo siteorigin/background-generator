@@ -1,18 +1,21 @@
 <template>
-    <div class="relative rounded-md" :style="{backgroundColor: value}">
-        <input
-            :value="value"
-            type="color"
-            class="rounded-md h-10 w-full bg-transparent border border-gray-300 flex items-center px-2 relative transition duration-300"
-            @input="update"
-            ref="inputColor"
-        >
-        <div
-            class="text-center absolute w-full h-full top-0 left-0 flex justify-center items-center cursor-pointer text-sm"
-            :class="{'text-black': isColorLight, 'text-white': !isColorLight}"
-            @click="openColorPicker"
-        >
-            <span>{{ value || 'Color' }}</span>
+    <div>
+        <span class="text-gray-900 font-medium uppercase block mb-2">Color</span>
+        <div class="relative rounded-lg" :style="{backgroundColor: value}">
+            <input
+                :value="value"
+                type="color"
+                class="rounded-lg h-14 w-full bg-transparent flex items-center px-2 relative transition duration-300"
+                @input="update"
+                ref="inputColor"
+            >
+            <div
+                class="text-center absolute uppercase font-medium w-full h-full top-0 left-0 flex justify-center items-center cursor-pointer"
+                :class="{'text-gray-900': isColorLight, 'text-white': !isColorLight}"
+                @click="openColorPicker"
+            >
+                <span>{{ value || 'Color' }}</span>
+            </div>
         </div>
     </div>
 </template>

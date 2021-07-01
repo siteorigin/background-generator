@@ -1,15 +1,15 @@
 <template>
-    <div class="mt-6">
-        <h3 class="text-gray-1000 font-medium text-sm mb-3">
+    <div>
+        <h3 class="text-gray-900 font-medium uppercase mb-3">
             {{ title }}
         </h3>
         <div class="flex items-center">
-            <div class="relative flex-grow bg-gray-200 h-2 rounded-md">
+            <div class="relative flex-grow bg-gray-100 h-1 rounded-sm">
                 <input v-model="percent" type="range" min="0" max="100" class="range" @change="update">
                 <div class="relative" :style="{'width': percent + '%'}">
-                    <span class="block border-sm bg-blue-500 h-2 rounded-md w-full"></span>
+                    <span class="block border-sm bg-blue-200 h-1 rounded-sm w-full"></span>
                     <span
-                        class="block rounded-full bg-white shadow-sm border border-gray-400 absolute w-5 h-5 right-0 -mr-2 thumb"/>
+                        class="block rounded-full bg-blue-200 absolute w-5 h-5 right-0 -mr-2 thumb"/>
                 </div>
             </div>
         </div>

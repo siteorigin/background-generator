@@ -1,0 +1,7 @@
+.snotifyToast__inner {
+    @apply p-0 w-full;
+}
+
+.snotifyToast {
+    width: 480px;
+}

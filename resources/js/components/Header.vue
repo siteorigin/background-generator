@@ -1,7 +1,14 @@
 <template>
-    <header class="text-center p-3 relative">
-        Background Generator
-        <a href="#" class="text-gray-500 absolute right-5" @click.prevent="openHelpModal">Help</a>
+    <header class="p-3 relative border-b border-gray-100">
+        <div class="max-w-1096 mx-auto px-4 flex justify-between items-center">
+            <img src="/images/logo.svg"/>
+            <a href="#"
+               class="border-2 border-gray-100 rounded-lg h-10 px-4 text-gray-900 font-medium text-sm flex items-center leading-none"
+               @click.prevent="openHelpModal">
+                    <img src="/images/help.svg" class="mr-2">
+                    Help
+            </a>
+        </div>
     </header>
 </template>
 
@@ -13,7 +20,9 @@ export default {
         openHelpModal () {
             this.$modal.show(HelpModal, {}, {
                 scrollable: true,
-                height: 'auto'
+                height: 'auto',
+                adaptive: true,
+                name: "help"
             })
         }
     }

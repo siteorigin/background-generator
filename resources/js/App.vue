@@ -1,7 +1,7 @@
 <template>
-    <div class="grid grid-rows-layout grid-cols-1 h-screen">
+    <div class="grid grid-rows-layout grid-cols-1">
         <app-header/>
-        <main class="bg-blue-100 overflow-hidden flex relative items-center justify-center row-start-2 row-end-3">
+        <main class="bg-blue-100 flex relative justify-center py-20 row-start-2 row-end-3">
             <preview/>
             <settings/>
         </main>

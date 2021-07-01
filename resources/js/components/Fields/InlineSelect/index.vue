@@ -1,13 +1,16 @@
 <template>
-    <div>
-        <input
-            v-model="search"
-            type="search"
-            class="p-2 rounded-t-md border border-gray-300 w-full h-10 block text-sm outline-none focus:outline-none focus:border-blue-600 transition duration-300"
-            placeholder="Filter"
-        >
+    <div class="mb-20">
+        <div class="relative border border-gray-400 rounded h-10 mb-3">
+            <img src="/images/search.svg" class="absolute left-3 top-3">
+            <input
+                v-model="search"
+                type="search"
+                class="w-full h-full pl-9 pr-2 placeholder-gray-200 rounded"
+                :placeholder="placeholder"
+            >
+        </div>
 
-        <ul class=" border-b border-l border-r border-gray-300 rounded-b-md h-137 overflow-y-scroll">
+        <ul class="h-464 overflow-y-scroll">
             <item
                 v-for="(option, index) in filteredOptions"
                 :key="index"
@@ -37,6 +40,10 @@ export default {
             type: Array,
             default: null,
             required: true
+        },
+        placeholder: {
+            type: String,
+            default: null
         }
     },
 

@@ -4,3 +4,8 @@
 
 @import "common.css";
 @import "~vue-snotify/styles/material";
+@import "toast.css";
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
