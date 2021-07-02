@@ -58,5 +58,7 @@ module.exports = {
             flex: ['hover', 'focus'],
         },
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/aspect-ratio')
+    ]
 }

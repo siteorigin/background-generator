@@ -1,11 +1,11 @@
 <template>
     <div class="mb-20">
-        <div class="relative border border-gray-400 rounded h-10 mb-3">
+        <div class="relative h-10 mb-3">
             <img src="/images/search.svg" class="absolute left-3 top-3">
             <input
                 v-model="search"
                 type="search"
-                class="w-full h-full pl-9 pr-2 placeholder-gray-200 rounded"
+                class="w-full h-full pl-9 pr-2 placeholder-gray-200 border border-gray-400 rounded focus:outline-none hover:border-blue-200 focus:border-blue-200 transition duration-200"
                 :placeholder="placeholder"
             >
         </div>

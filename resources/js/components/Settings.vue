@@ -30,19 +30,29 @@
                 </div>
             </div>
 
-            <div class="flex items-center justify-center">
+            <div class="flex items-center justify-center relative w-max mx-auto">
                 <a
                     :href="backgroundUrl"
-                    class="bg-blue-200 hover:bg-blue-700 font-medium shadow-sm text-white h-12 flex items-center rounded-l-lg px-4"
+                    class="bg-blue-200 hover:bg-blue-700 font-medium shadow-sm text-white h-12 flex items-center rounded-l-lg px-4 relative z-10"
                     download
                     @click="download"
                 >
                     <img src="/images/down.svg" class="mr-2.5">
                     Download  @1x image
                 </a>
-                <button class="border-l border-white rounded-r-lg flex items-center justify-center w-10 h-12 bg-blue-200">
+                <button class="border-l border-white hover:bg-blue-700 rounded-r-lg flex items-center justify-center w-10 h-12 bg-blue-200 relative z-10 focus:outline-none"
+                        @click="toggleDropdown()">
                     <img src="/images/arrow-down.svg">
                 </button>
+                <a  v-if="openDropdown"
+                    :href="backgroundUrl"
+                    class="hover:bg-blue-100 bg-white font-medium shadow-sm text-gray-900 h-14 flex items-center rounded-b-lg px-4 absolute -bottom-full left-0 w-full pt-2 focus:outline-none"
+                    download
+                    @click="download && toggleDropdown()"
+                >
+                    <img src="/images/down-dark.svg" class="mr-2.5">
+                    Download  @2x image
+                </a>
             </div>
         </div>
 
@@ -69,7 +79,8 @@ export default {
     },
 
     data: () => ({
-        form: {}
+        form: {},
+        openDropdown: false
     }),
 
     mounted () {
@@ -124,6 +135,9 @@ export default {
         },
         clear () {
             this.form = Object.assign({}, this.settings)
+        },
+        toggleDropdown () {
+            this.openDropdown = !this.openDropdown
         }
     }
 }
