@@ -6,7 +6,9 @@
                  :key="index"
                  class="relative group  w-12 h-12">
 
-                <button class="w-5 h-5 rounded-full bg-red-100 absolute -top-2.5 -right-2.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200">
+                <button class="w-5 h-5 rounded-full bg-red-100 absolute -top-2.5 -right-2.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-200"
+                        @click="removePattern(pattern)"
+                >
                     <img src="/images/x.svg">
                 </button>
                 <button
@@ -37,7 +39,8 @@ export default {
     methods: {
         ...mapActions([
             'savePattern',
-            'selectPattern'
+            'selectPattern',
+            'removePattern'
         ])
     }
 }
