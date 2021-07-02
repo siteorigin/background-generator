@@ -37,3 +37,6 @@ input::placeholder {
 .vm--overlay {
     background: rgba(2, 15, 47, .9) !important;
 }
+.vm--modal {
+  height: auto !important;
+}

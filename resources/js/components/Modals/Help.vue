@@ -1,5 +1,5 @@
 <template>
-    <div class="p-8">
+    <div class="p-4 sm:p-8">
         <div class="mb-6 flex items-center justify-between">
             <h2 class="text-xl text-gray-900 font-medium">
                 Background Generator Help
@@ -11,13 +11,7 @@
             </button>
         </div>
         <div class="relative mb-6 aspect-w-16 aspect-h-9">
-            <video
-                ref="video"
-                preload="metadata"
-                class="w-full"
-            >
-                <source src="/videos/video.mp4#t=0.5" type="video/mp4">
-            </video>
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/tT0pQYaTrrM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <button
                 v-if="!isPlaying"
                 class="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-auto h-auto focus:outline-none"
