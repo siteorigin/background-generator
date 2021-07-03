@@ -2,5 +2,5 @@ import Vue from 'vue'
 import VueLazyload from 'vue-lazyload'
 
 Vue.use(VueLazyload, {
-    throttleWait: 300
+    preLoad: 1.3
 })
