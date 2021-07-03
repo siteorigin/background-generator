@@ -18,10 +18,7 @@ Vue.directive('background-image', {
         image.addEventListener('load', () => {
             el.style.backgroundImage = 'url(' + binding.value + ')'
             el.style.opacity = '1'
-
-            setTimeout(() => {
-                vnode.context.$emit('background-image-loading', false)
-            }, 0)
+            vnode.context.$emit('background-image-loading', false)
         })
         image.src = binding.value
     }
