@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import _isEqual from 'lodash/isEqual'
 import _debounce from 'lodash/debounce'
 import queryString from 'query-string'
 import { DEFAULT_PATTERN } from '~/constants'
@@ -29,10 +30,10 @@ export default new Vuex.Store({
         updateSettings: _debounce((state, payload) => {
             state.settings = Object.assign({}, state.settings, payload)
         }, 100),
-        selectPatternMutation(state, payload) {
+        selectPatternMutation (state, payload) {
             state.settings = Object.assign({}, payload)
         },
-        addCurrentPatternMutation(state, { backgroundUrl }) {
+        addCurrentPatternMutation (state, { backgroundUrl }) {
             state.patterns.push(Object.assign({}, state.settings, {
                 backgroundUrl
             }))
@@ -40,23 +41,23 @@ export default new Vuex.Store({
 
             localStorage.setItem('savedPatterns', JSON.stringify(state.patterns))
         },
-        removePatternMutation(state, { pattern }) {
-            const index = state.patterns.findIndex(item => item.pattern === pattern)
+        removePatternMutation (state, payload) {
+            const index = state.patterns.findIndex(item => _isEqual(item, payload))
             state.patterns.splice(index, 1)
             localStorage.setItem('savedPatterns', JSON.stringify(state.patterns))
         }
     },
 
     actions: {
-        savePattern({ commit, getters }) {
+        savePattern ({ commit, getters }) {
             commit('addCurrentPatternMutation', {
                 backgroundUrl: getters.backgroundUrl
             })
         },
-        selectPattern({ commit }, payload) {
+        selectPattern ({ commit }, payload) {
             commit('selectPatternMutation', payload)
         },
-        removePattern({ commit }, payload) {
+        removePattern ({ commit }, payload) {
             commit('removePatternMutation', payload)
         }
     }
