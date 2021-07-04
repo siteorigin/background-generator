@@ -1,9 +1,7 @@
 <template>
     <li
         class="hover:bg-blue-100 border-gray-400 border transition duration-300 cursor-pointer flex items-center overflow-hidden h-16 rounded-lg mb-4 text-gray-500 capitalize"
-        :class="{
-            'border-blue-200 bg-blue-100 font-medium': value === option.value
-        }"
+        :class="{'border-blue-200 bg-blue-100 font-medium': value === option.value}"
         @click="select(option.value)"
     >
         <img
