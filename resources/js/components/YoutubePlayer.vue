@@ -12,7 +12,7 @@
         <template v-else>
             <img
                 :src="`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`"
-                alt="Play"
+                alt="Thumbnail video"
             />
             <button
                 class="absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-auto h-auto focus:outline-none"
