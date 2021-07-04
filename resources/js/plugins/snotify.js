@@ -3,8 +3,9 @@ import Snotify from 'vue-snotify'
 
 const options = {
     toast: {
+        position: 'leftTop',
         showProgressBar: false,
-        timeout: 4500
+        timeout: 3500
     }
 }
 
