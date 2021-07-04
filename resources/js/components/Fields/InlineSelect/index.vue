@@ -27,7 +27,7 @@
 <script>
 import Item from './Item'
 
-const SCROLL_OFFSET = 270
+const SCROLL_OFFSET = 256
 
 export default {
     props: {
