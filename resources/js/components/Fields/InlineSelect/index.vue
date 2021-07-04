@@ -18,6 +18,7 @@
                 :option="option"
                 :value="value"
                 :type="type"
+                :color="color"
                 @select="select"
             />
         </ul>
@@ -36,6 +37,10 @@ export default {
             default: null
         },
         type: {
+            type: String,
+            default: null
+        },
+        color: {
             type: String,
             default: null
         },

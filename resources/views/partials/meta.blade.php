@@ -10,7 +10,6 @@
 <meta property="twitter:description" content="{{ config('meta.description') }}">
 {{--<meta property="twitter:image" content="{{ asset(config('meta.sharing_image')) }}">--}}
 
-
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:title" content="{{ config('app.name') }}">

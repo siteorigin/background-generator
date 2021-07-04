@@ -27,6 +27,7 @@
                     <inline-select
                         v-model="form.pattern"
                         :options="patterns"
+                        :color="form.color"
                         type="pattern"
                         placeholder="Search patterns..."
                     />
@@ -39,6 +40,7 @@
                     <inline-select
                         v-model="form.blend"
                         :options="blendModes"
+                        :color="form.color"
                         type="blend"
                         placeholder="Search overlay filters..."
                     />
