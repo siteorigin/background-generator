@@ -7,7 +7,7 @@
             Like what we have done?<br />
             Please share:
         </p>
-        <div class="flex">
+        <div class="flex space-x-2.5">
             <twitter />
             <facebook />
         </div>
