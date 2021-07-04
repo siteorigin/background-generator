@@ -1,8 +1,11 @@
 <template>
     <header class="py-3 relative border-b border-gray-100">
         <div class="max-w-1096 mx-auto px-4 flex justify-between items-center">
-            <a href="/">
-                <img src="/images/logo.svg" class="w-48 sm:w-auto" alt="Logo"/>
+            <a href="/" class="sm:text-xl text-gray-900">
+                <h1 class="flex items-center">
+                    <img src="/images/logo-sm.svg" class="w-auto mr-2.5" alt="Logo"/>
+                    Background Generator
+                </h1>
             </a>
             <a
                 href="#"
