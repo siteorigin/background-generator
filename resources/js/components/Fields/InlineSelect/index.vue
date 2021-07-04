@@ -10,10 +10,11 @@
             >
         </div>
 
-        <ul class="h-464 overflow-y-scroll">
+        <ul ref="container" class="h-464 overflow-y-scroll">
             <item
                 v-for="(option, index) in filteredOptions"
                 :key="index"
+                :ref="option.value === value ? 'selected' : null"
                 :option="option"
                 :value="value"
                 :type="type"
@@ -26,10 +27,12 @@
 <script>
 import Item from './Item'
 
+const SCROLL_OFFSET = 270
+
 export default {
     props: {
         value: {
-            type: String|Number,
+            type: String | Number,
             default: null
         },
         type: {
@@ -55,6 +58,15 @@ export default {
         search: ''
     }),
 
+    created() {
+        this.unwatchIsLiveProp = this.$watch('value', (value) => {
+            if(value) {
+                this.$nextTick(this.scrollToSelected)
+                this.unwatchIsLiveProp()
+            }
+        });
+    },
+
     computed: {
         filteredOptions () {
             return this.options.filter(option => {
@@ -70,6 +82,14 @@ export default {
     methods: {
         select (value) {
             this.$emit('input', value)
+        },
+        scrollToSelected () {
+            const selectedItem = this.$refs.selected
+
+            if (selectedItem) {
+                const el = selectedItem[0].$el
+                this.$refs.container.scrollTop = el.offsetTop - SCROLL_OFFSET
+            }
         }
     }
 }
