@@ -29,16 +29,6 @@
             est. Praesent pulvinar pharetra ante, non pellentesque mauris
             aliquam ut. Curabitur vel lorem orci. Nunc finibus tempor arcu,
             molestie vehicula nibh vestibulum eu.
-            <br /><br />
-            Nunc justo mauris, porta ac elementum sed, porta ac dolor. Duis
-            risus magna, sodales et pretium eu, ornare sed magna. Suspendisse
-            sed euismod nunc. Nam quam nibh, molestie ut purus sit amet,
-            porttitor bibendum enim. Etiam imperdiet egestas mi sit amet
-            blandit. Vivamus ultrices sagittis justo at fermentum. Curabitur
-            facilisis sodales justo, ut semper tellus bibendum iaculis. Duis
-            convallis feugiat magna eget sodales. Pellentesque quis ipsum quis
-            risus bibendum ullamcorper. Proin sem enim, eleifend et orci at,
-            tincidunt iaculis augue. Nullam sit amet fringilla nibh.
         </p>
     </div>
 </template>
