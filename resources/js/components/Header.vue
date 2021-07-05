@@ -3,7 +3,7 @@
         <div class="max-w-1096 mx-auto px-4 flex justify-between items-center">
             <a href="/" class="sm:text-xl text-gray-900">
                 <h1 class="flex items-center">
-                    <img src="/images/logo-sm.svg" class="w-auto mr-2.5" alt="Logo"/>
+                    <img src="/images/logo-sm.svg" class="w-auto mr-2.5" alt="Background Generator Logo"/>
                     Background Generator
                 </h1>
             </a>

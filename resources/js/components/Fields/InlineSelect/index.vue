@@ -63,13 +63,13 @@ export default {
         search: ''
     }),
 
-    created() {
+    created () {
         this.unwatchIsLiveProp = this.$watch('value', (value) => {
-            if(value) {
+            if (value) {
                 this.$nextTick(this.scrollToSelected)
                 this.unwatchIsLiveProp()
             }
-        });
+        })
     },
 
     computed: {
