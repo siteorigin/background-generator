@@ -30,4 +30,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'gtag' => [
+        'id' => env('GA_TRACKING_ID'),
+    ],
 ];

@@ -13,6 +13,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
     @include('partials.meta')
+    @include('partials.analytics')
 
     <script>
         window.config = @json($config);
