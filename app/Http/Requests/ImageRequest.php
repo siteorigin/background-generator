@@ -31,7 +31,7 @@ class ImageRequest extends FormRequest
         return [
             'color' => [new Color()],
             'pattern' => Rule::in(Image::getPatterns()),
-            'blend' => Rule::in(Image::$blendModes),
+            'blend' => Rule::in(array_keys(Image::$blendModes)),
             'invert' => 'boolean',
             '2x' => 'boolean',
             'intensity' => 'integer',

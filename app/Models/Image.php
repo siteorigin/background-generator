@@ -2,28 +2,26 @@
 
 namespace App\Models;
 
+use \Imagick;
 use App\Casts\HexColorCast;
 use App\Image\CustomImagick;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use \Imagick;
 use ImagickPixel;
 
 class Image extends Model
 {
     use HasFactory;
 
-    static array $blendModes = [
+    public static array $blendModes = [
         Imagick::COMPOSITE_DEFAULT => 'Default',
         Imagick::COMPOSITE_ATOP => 'Atop',
         Imagick::COMPOSITE_BLEND => 'Blend',
         Imagick::COMPOSITE_BUMPMAP => 'Bumpmap',
-        Imagick::COMPOSITE_CLEAR => 'Clear',
         Imagick::COMPOSITE_COLORBURN => 'Color Burn',
         Imagick::COMPOSITE_COLORDODGE => 'Color Dodge',
         Imagick::COMPOSITE_COLORIZE => 'Colorize',
         Imagick::COMPOSITE_DARKEN => 'Darken',
-        Imagick::COMPOSITE_DSTATOP => 'Dstatop',
         Imagick::COMPOSITE_DST => 'Dst',
         Imagick::COMPOSITE_DSTIN => 'Dstin',
         Imagick::COMPOSITE_DSTOUT => 'Dstout',
@@ -34,22 +32,16 @@ class Image extends Model
         Imagick::COMPOSITE_EXCLUSION => 'Exclusion',
         Imagick::COMPOSITE_HARDLIGHT => 'Hardlight',
         Imagick::COMPOSITE_HUE => 'Hue',
-        Imagick::COMPOSITE_IN => 'In',
         Imagick::COMPOSITE_LIGHTEN => 'Lighten',
         Imagick::COMPOSITE_LUMINIZE => 'Luminize',
         Imagick::COMPOSITE_MODULATE => 'Modulate',
         Imagick::COMPOSITE_MULTIPLY => 'Multiply',
-        Imagick::COMPOSITE_OUT => 'Out',
         Imagick::COMPOSITE_OVERLAY => 'Overlay',
         Imagick::COMPOSITE_PLUS => 'Plus',
-        Imagick::COMPOSITE_REPLACE => 'Replace',
         Imagick::COMPOSITE_SATURATE => 'Saturate',
         Imagick::COMPOSITE_SCREEN => 'Screen',
         Imagick::COMPOSITE_SOFTLIGHT => 'Softlight',
         Imagick::COMPOSITE_SRCATOP => 'Srcatop',
-        Imagick::COMPOSITE_SRC => 'Src',
-        Imagick::COMPOSITE_SRCIN => 'Srcin',
-        Imagick::COMPOSITE_SRCOUT => 'Srcout',
         Imagick::COMPOSITE_SRCOVER => 'Srcover',
         Imagick::COMPOSITE_THRESHOLD => 'Threshold',
         Imagick::COMPOSITE_XOR => 'Xor',
@@ -73,7 +65,7 @@ class Image extends Model
     ];
 
     protected $fillable = [
-        'color', 'pattern', 'blend', 'invert', '2x', 'intensity', 'noise'
+        'color', 'pattern', 'blend', 'invert', '2x', 'intensity', 'noise',
     ];
 
     /**
@@ -81,18 +73,19 @@ class Image extends Model
      */
     public static function getPatterns(): array
     {
-        $patterns = array();
+        $patterns = [];
 
         $path = storage_path('/patterns/');
 
         $pattern_files = glob($path . '*.png');
-        foreach($pattern_files as $file){
-            if(!substr_count(basename($file), '@2X')){
+        foreach ($pattern_files as $file) {
+            if (! substr_count(basename($file), '@2X')) {
                 $p = pathinfo($file);
                 $patterns[] = $p['filename'];
             }
         }
         sort($patterns);
+
         return $patterns;
     }
 
@@ -114,11 +107,17 @@ class Image extends Model
      */
     public function getPatternSize(): array
     {
-        if(!file_exists($this->getPatternFilename())) return [96, 96];
+        if (! file_exists($this->getPatternFilename())) {
+            return [96, 96];
+        }
 
-        $size = array_slice( getimagesize($this->getPatternFilename()), 0, 2);
-        if($size[0] < 96) $size[0] = ceil(96 / $size[0]) * $size[0];
-        if($size[1] < 96) $size[1] = ceil(96 / $size[1]) * $size[1];
+        $size = array_slice(getimagesize($this->getPatternFilename()), 0, 2);
+        if ($size[0] < 96) {
+            $size[0] = ceil(96 / $size[0]) * $size[0];
+        }
+        if ($size[1] < 96) {
+            $size[1] = ceil(96 / $size[1]) * $size[1];
+        }
     }
 
     /**
@@ -129,15 +128,17 @@ class Image extends Model
     public function getPattern(): CustomImagick
     {
         $pattern = new CustomImagick();
-        $pattern->readImage( $this->getPatternFilename() );
+        $pattern->readImage($this->getPatternFilename());
 
-        if($this->attributes['crop']) {
+        if ($this->attributes['crop']) {
             [$width, $height] = explode('x', $this->attributes['crop']);
-            $pattern->cropImage( intval($width), intval($height), 0, 0 );
+            $pattern->cropImage(intval($width), intval($height), 0, 0);
         }
 
-        $pattern->setImageAlpha( $this->attributes['intensity'] / 100 );
-        if($this->attributes['invert']) $pattern->negateImage( true );
+        $pattern->setImageAlpha($this->attributes['intensity'] / 100);
+        if ($this->attributes['invert']) {
+            $pattern->negateImage(true);
+        }
 
         return $pattern;
     }
@@ -156,10 +157,10 @@ class Image extends Model
         $bg->newImage(
             $pattern->getImageWidth(),
             $pattern->getImageHeight(),
-            new ImagickPixel( $this->attributes['color'] )
+            new ImagickPixel($this->attributes['color'])
         );
         $bg->setImageFormat('png');
-        $bg->compositeImage( $pattern, (int) $this->attributes['blend'], 0,0 );
+        $bg->compositeImage($pattern, (int) $this->attributes['blend'], 0, 0);
         $bg->overlayNoise($this->attributes['noise']);
 
         return $bg;

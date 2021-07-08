@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ImageRequest;
 use App\Models\Image;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class ImageController extends Controller
 {
@@ -20,7 +18,7 @@ class ImageController extends Controller
 
         return response($pattern->getImageBlob())
             ->withHeaders([
-                'content-type' => $pattern->getImageMimeType()
+                'content-type' => $pattern->getImageMimeType(),
             ]);
     }
 
@@ -38,7 +36,7 @@ class ImageController extends Controller
 
         return response()
             ->streamDownload(
-                function() use ($pattern){
+                function () use ($pattern) {
                     echo $pattern->getImageBlob();
                 },
                 $filename . '.' . $pattern->getImageFormat(),

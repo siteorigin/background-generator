@@ -1,0 +1,42 @@
+/* Checkbox */
+.custom-checkbox input {
+    @apply hidden;
+}
+
+.custom-checkbox {
+    @apply relative flex items-center capitalize cursor-pointer;
+}
+
+.custom-checkbox span {
+    width: 28px;
+    @apply rounded-lg border border-gray-200 bg-gray-200 h-4 relative mr-1;
+}
+
+.custom-checkbox span:before {
+    content: '';
+    @apply rounded-full w-3 h-3 bg-white block top-px left-px absolute transition duration-200;
+}
+
+.custom-checkbox:hover span {
+    @apply border-blue-200;
+}
+
+.custom-checkbox input:checked ~ span {
+    @apply bg-blue-200 border-blue-200;
+}
+
+.custom-checkbox input:checked ~ span:before {
+    @apply transform translate-x-3;
+}
+
+input::placeholder {
+    font-size: 15px;
+    @apply font-normal;
+}
+
+.vm--overlay {
+    background: rgba(2, 15, 47, .9) !important;
+}
+.vm--modal {
+  height: auto !important;
+}

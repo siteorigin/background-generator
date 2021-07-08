@@ -17,7 +17,10 @@ class HexColorCast implements CastsAttributes
      */
     public function get($model, $key, $value, $attributes)
     {
-        if($value[0] != '#') $value = '#' . $value;
+        if ($value[0] != '#') {
+            $value = '#' . $value;
+        }
+
         return $value;
     }
 
@@ -32,7 +35,10 @@ class HexColorCast implements CastsAttributes
      */
     public function set($model, $key, $value, $attributes)
     {
-        if($value[0] != '#') $value = '#' . $value;
+        if ($value[0] != '#') {
+            $value = '#' . $value;
+        }
+
         return $value;
     }
 }

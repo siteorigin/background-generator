@@ -1,0 +1,4 @@
+import './vue-lazyload'
+import './vue-js-modal'
+import './snotify'
+import './vue-social-sharing'

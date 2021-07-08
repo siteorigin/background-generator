@@ -9,6 +9,7 @@
         "ext-imagick": "*",
         "ext-json": "*",
         "fideloper/proxy": "^4.4",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
@@ -36,6 +37,7 @@
         }
     },
     "scripts": {
+        "format":  "vendor/bin/php-cs-fixer fix --allow-risky=yes",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
