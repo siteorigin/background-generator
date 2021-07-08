@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-10 sm:mb-20">
+    <div class="mb-10 sm:mb-12">
         <div class="relative h-10 mb-3">
             <img src="/images/search.svg" class="absolute left-3 top-3">
             <input
