@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import _isEqual from 'lodash/isEqual'
 import _debounce from 'lodash/debounce'
 import queryString from 'query-string'
 import { DEFAULT_PATTERN } from '~/constants'
@@ -34,15 +33,19 @@ export default new Vuex.Store({
             state.settings = Object.assign({}, payload)
         },
         addCurrentPatternMutation (state, { backgroundUrl }) {
+            const id = state.patterns.reduce((acc, currentPattern) => (acc > currentPattern.id) ? acc : currentPattern.id, 1) + 1
+
             state.patterns.push(Object.assign({}, state.settings, {
-                backgroundUrl
+                backgroundUrl,
+                id
             }))
+
             state.settings = Object.assign({}, DEFAULT_PATTERN)
 
             localStorage.setItem('savedPatterns', JSON.stringify(state.patterns))
         },
-        removePatternMutation (state, payload) {
-            const index = state.patterns.findIndex(item => _isEqual(item, payload))
+        removePatternMutation (state, { id }) {
+            const index = state.patterns.findIndex(item => item.id === id)
             state.patterns.splice(index, 1)
             localStorage.setItem('savedPatterns', JSON.stringify(state.patterns))
         }
