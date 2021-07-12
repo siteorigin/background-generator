@@ -1,4 +1,4 @@
-export const hexIsLight = (color) => {
+export const isLightColor = (color) => {
     const hex = color.replace('#', '')
     const r = parseInt(hex.substr(0, 2), 16)
     const g = parseInt(hex.substr(2, 2), 16)

@@ -33,7 +33,7 @@ export default new Vuex.Store({
             state.settings = Object.assign({}, payload)
         },
         addCurrentPatternMutation (state, { backgroundUrl }) {
-            const id = state.patterns.reduce((acc, currentPattern) => (acc > currentPattern.id) ? acc : currentPattern.id, 1) + 1
+            const id = state.patterns.reduce((acc, currentPattern) => (acc > currentPattern.id) ? acc : currentPattern.id + 1, 1)
 
             state.patterns.push(Object.assign({}, state.settings, {
                 backgroundUrl,
