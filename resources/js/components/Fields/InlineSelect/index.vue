@@ -10,7 +10,7 @@
             >
         </div>
 
-        <ul ref="container" class="h-464 overflow-y-scroll">
+        <ul ref="container" class="h-464 overflow-y-scroll pr-5 -mr-5 list">
             <item
                 v-for="(option, index) in filteredOptions"
                 :key="index"

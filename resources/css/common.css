@@ -40,3 +40,7 @@ input::placeholder {
 .vm--modal {
   height: auto !important;
 }
+
+.list::-webkit-scrollbar-track {
+    background: #ffffff;
+}
