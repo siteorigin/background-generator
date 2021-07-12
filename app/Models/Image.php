@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Presenters\ImagePresenter;
 use \Imagick;
 use App\Casts\HexColorCast;
 use App\Image\CustomImagick;
@@ -12,6 +13,7 @@ use ImagickPixel;
 class Image extends Model
 {
     use HasFactory;
+    use ImagePresenter;
 
     public static array $blendModes = [
         Imagick::COMPOSITE_DEFAULT => 'Default',
