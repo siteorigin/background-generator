@@ -19,7 +19,7 @@
         <chrome-picker
             v-if="isOpen"
             :value="value"
-            class="absolute z-50"
+            class="absolute z-50 left-1/2 transform -translate-x-1/2"
             @input="update"
         />
     </div>
