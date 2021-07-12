@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\Presenters\ImagePresenter;
 use \Imagick;
 use App\Casts\HexColorCast;
 use App\Image\CustomImagick;
+use App\Models\Presenters\ImagePresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use ImagickPixel;
