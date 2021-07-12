@@ -6,7 +6,7 @@
             <div class="mb-10">
                 <color-picker v-model="form.color"/>
             </div>
-            <div class="sm:flex sm:space-x-6 mb-10">
+            <div class="sm:flex sm:space-x-10 mb-10">
                 <div class="sm:w-1/2">
                     <div class="mb-3 flex items-center justify-between">
                         <h4 class="text-gray-900 font-medium uppercase">
@@ -34,7 +34,7 @@
                     <range v-model="form.intensity" title="Pattern Intensity"/>
                 </div>
                 <div class="sm:w-1/2 mt-10 sm:mt-0">
-                    <h4 class="text-gray-900 font-medium uppercase mb-3">
+                    <h4 class="text-sm text-gray-900 font-medium uppercase mb-3">
                         Overlay
                     </h4>
                     <inline-select

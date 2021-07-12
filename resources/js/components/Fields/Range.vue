@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3 class="text-gray-900 font-medium uppercase mb-3">
+        <h3 class="text-sm text-gray-900 font-medium uppercase mb-3">
             {{ title }}
         </h3>
         <div class="flex items-center">

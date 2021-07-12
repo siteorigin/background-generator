@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span class="text-gray-900 font-medium uppercase block mb-2">Color</span>
+        <span class="text-sm text-gray-900 font-medium uppercase block mb-2">Color</span>
         <div class="relative rounded-lg" :style="{backgroundColor: value}">
             <input
                 :value="value"

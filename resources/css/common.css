@@ -42,5 +42,5 @@ input::placeholder {
 }
 
 .list::-webkit-scrollbar-track {
-    background: #ffffff;
+    background-color: #ffffff;
 }
