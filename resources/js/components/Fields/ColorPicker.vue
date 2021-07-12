@@ -1,13 +1,11 @@
 <template>
-    <div>
+    <div class="relative" v-click-outside="close">
         <span class="text-gray-900 font-medium uppercase block mb-2">Color</span>
         <div class="relative rounded-lg" :style="{backgroundColor: value}">
             <input
                 :value="value"
                 type="color"
                 class="rounded-lg h-14 w-full bg-transparent flex items-center px-2 relative transition duration-300"
-                @input="update"
-                ref="inputColor"
             >
             <div
                 class="text-center absolute uppercase font-medium w-full h-full top-0 left-0 flex justify-center items-center cursor-pointer"
@@ -17,10 +15,18 @@
                 <span>{{ value || 'Color' }}</span>
             </div>
         </div>
+
+        <chrome-picker
+            v-if="isOpen"
+            :value="value"
+            class="absolute z-50"
+            @input="update"
+        />
     </div>
 </template>
 
 <script>
+import { Chrome as ChromePicker } from 'vue-color'
 import { hexIsLight } from '~/utils'
 
 export default {
@@ -31,6 +37,14 @@ export default {
         }
     },
 
+    components: {
+        ChromePicker
+    },
+
+    data: () => ({
+        isOpen: false
+    }),
+
     computed: {
         isColorLight () {
             if (!this.value) return true
@@ -39,11 +53,14 @@ export default {
     },
 
     methods: {
-        update (event) {
-            this.$emit('input', event.target.value)
+        update ({ hex }) {
+            this.$emit('input', hex)
         },
         openColorPicker () {
-            this.$refs.inputColor.click()
+            this.isOpen = true
+        },
+        close() {
+            this.isOpen = false
         }
     }
 }
