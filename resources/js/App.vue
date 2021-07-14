@@ -3,7 +3,7 @@
         <loading ref="loading"/>
         <app-header/>
         <main
-            class="bg-blue-100 flex relative justify-center px-4 py-12 sm:py-20 row-start-2 row-end-3"
+            class="bg-blue-100 flex relative justify-center sm:mt-20 sm:mb-16 px-4 py-12 sm:py-20 row-start-2 row-end-3"
         >
             <preview @background-image-loading="toggleLoader"/>
             <settings/>
