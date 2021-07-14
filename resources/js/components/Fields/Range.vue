@@ -9,7 +9,7 @@
                 <div class="relative" :style="{'width': percent + '%'}">
                     <span class="block border-sm bg-blue-200 h-1 rounded-sm w-full"></span>
                     <span
-                        class="block rounded-full bg-blue-200 absolute w-5 h-5 right-0 -mr-2 thumb"/>
+                        class="block rounded-full bg-blue-200 absolute w-5 h-5 right-0 -mr-5 thumb"/>
                 </div>
             </div>
         </div>

@@ -44,3 +44,7 @@ input::placeholder {
 .list::-webkit-scrollbar-track {
     background-color: #ffffff;
 }
+
+.list li:last-child {
+    margin-bottom: 0 !important;
+}
