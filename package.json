@@ -23,6 +23,7 @@
     "dependencies": {
         "@tailwindcss/aspect-ratio": "^0.2.1",
         "query-string": "^7.0.0",
+        "simplebar-vue": "^1.6.7",
         "v-click-outside": "^3.1.2",
         "vue-color": "^2.8.1",
         "vue-js-modal": "^2.0.0-rc.6",

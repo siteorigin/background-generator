@@ -5,7 +5,7 @@
             <input
                 :value="currentColor"
                 type="color"
-                class="rounded-lg h-14 w-full bg-transparent flex items-center px-2 relative transition duration-300"
+                class="rounded-lg h-14 w-full bg-transparent flex items-center px-2 relative transition duration-300 border-none"
             >
             <div
                 class="text-center absolute uppercase font-medium w-full h-full top-0 left-0 flex justify-center items-center cursor-pointer"

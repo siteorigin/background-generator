@@ -6,6 +6,7 @@
 @import "common.css";
 @import "~vue-snotify/styles/material";
 @import "toast.css";
+@import "vendor/simplebar.css";
 
 body {
     font-family: 'Rubik', sans-serif;

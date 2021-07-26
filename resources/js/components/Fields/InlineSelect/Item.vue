@@ -4,11 +4,11 @@
         :class="{'border-blue-200 bg-blue-100 font-medium': value === option.value}"
         @click="select(option.value)"
     >
-        <div class="relative mr-3 border-r border-gray-400">
-            <div class="absolute top-0 left-0 w-full h-full" :style="{backgroundColor: color}"/>
+        <div class="relative mr-3 border-r border-gray-400 overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full rounded-l-lg" :style="{backgroundColor: color}"/>
             <img
                 v-lazy="backgroundUrl"
-                class="w-16 h-16 relative z-10"
+                class="w-16 h-16 relative z-10 rounded-l-lg"
                 :class="{ 'border-blue-200': value === option.value }"
                 :alt="option.label"
             />
