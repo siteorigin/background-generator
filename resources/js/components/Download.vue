@@ -6,11 +6,11 @@
             download
             @click="download"
         >
-            <img src="/images/down.svg" class="mr-2.5" alt="Download"/> Download @1x image
+            <img src="/images/down.svg" class="mr-2.5" alt="Download"/> Download image
         </a>
         <a
             :href="backgroundUrl2x"
-            class="border-l border-white hover:bg-blue-700 text-white rounded-r-lg flex items-center justify-center w-12 h-12 bg-blue-200 relative z-10 focus:outline-none"
+            class="border-l border-white hover:bg-blue-700 text-white rounded-r-lg flex items-center justify-center px-4 h-12 bg-blue-200 relative z-10 focus:outline-none"
             download
             @click="download"
         >

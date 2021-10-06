@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-10 sm:mb-12">
+    <div class="mb-6 sm:mb-12">
         <div class="relative h-10 mb-3">
             <img src="/images/search.svg" class="absolute left-3 top-3">
             <input
@@ -10,23 +10,27 @@
             >
         </div>
 
-        <ul ref="container" class="h-464 overflow-y-scroll pr-5 -mr-5 list">
-            <item
-                v-for="(option, index) in filteredOptions"
-                :key="index"
-                :ref="option.value === value ? 'selected' : null"
-                :option="option"
-                :value="value"
-                :type="type"
-                :color="color"
-                @select="select"
-            />
-        </ul>
+        <simplebar data-simplebar-auto-hide="false" class="h-464 pr-5 -mr-5">
+            <ul ref="container" class="list">
+                <item
+                    v-for="(option, index) in filteredOptions"
+                    :key="index"
+                    :ref="option.value === value ? 'selected' : null"
+                    :option="option"
+                    :value="value"
+                    :type="type"
+                    :color="color"
+                    @select="select"
+                />
+            </ul>
+        </simplebar>
     </div>
 </template>
 
 <script>
 import Item from './Item'
+
+import simplebar from 'simplebar-vue';
 
 const SCROLL_OFFSET = 256
 
@@ -56,7 +60,8 @@ export default {
     },
 
     components: {
-        Item
+        Item,
+        simplebar
     },
 
     data: () => ({

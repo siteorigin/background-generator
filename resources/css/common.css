@@ -34,6 +34,10 @@ input::placeholder {
     @apply font-normal;
 }
 
+input[type="color"]::-moz-color-swatch {
+    border: none;
+}
+
 .vm--overlay {
     background: rgba(2, 15, 47, .9) !important;
 }
@@ -41,6 +45,31 @@ input::placeholder {
   height: auto !important;
 }
 
-.list::-webkit-scrollbar-track {
-    background: #ffffff;
+
+.list li:last-child {
+    margin-bottom: 0 !important;
 }
+
+/* custom scrollbar */
+/*.list {*/
+/*    scrollbar-color: rgba(2, 15, 47, 0.24);*/
+/*}*/
+
+/*.list::-webkit-scrollbar {*/
+/*    width: 6px;*/
+/*}*/
+
+/*.list::-webkit-scrollbar-track {*/
+/*    background-color: transparent;*/
+/*}*/
+
+/*.list::-webkit-scrollbar-thumb {*/
+/*    background-color: rgba(2, 15, 47, 0.24);*/
+/*    opacity: 0.24;*/
+/*    border-radius: 20px;*/
+/*    background-clip: content-box;*/
+/*}*/
+
+/*.list::-webkit-scrollbar-thumb:hover {*/
+/*    background-color: rgba(2, 15, 47, 0.4);*/
+/*}*/
