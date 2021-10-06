@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-gray-900 relative py-6 px-4">
+    <footer class="bg-gray-900 py-6 px-4 relative sm:fixed w-screen sm:bottom-0 sm:left-0 z-10">
         <share-buttons/>
 
         <p class="text-sm text-gray-50 text-center mt-6 sm:mt-0">

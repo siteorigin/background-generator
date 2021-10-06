@@ -1,5 +1,5 @@
 <template>
-    <header class="py-4 h-20 relative border-b border-gray-100">
+    <header class="py-4 h-20 relative sm:fixed w-screen sm:top-0 sm:left-0 z-40 border-b border-gray-100 bg-white">
         <div class="max-w-1096 mx-auto px-4 h-full flex justify-between items-center">
             <a href="/" class="sm:text-xl text-gray-900">
                 <h1 class="flex items-center">
