@@ -137,7 +137,7 @@ class Image extends Model
             $pattern->cropImage(intval($width), intval($height), 0, 0);
         }
 
-        $pattern->setImageAlpha($this->attributes['intensity'] / 100);
+        $pattern->setImageOpacity($this->attributes['intensity'] / 100);
         if ($this->attributes['invert']) {
             $pattern->negateImage(true);
         }
