@@ -14,22 +14,20 @@
             </button>
         </div>
 
-        <youtube-player video-id="tT0pQYaTrrM" />
+        <p class="text-gray-900 mb-6">Create background patterns for your website or graphic design project.</p>
 
-        <p class="text-gray-900">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            commodo libero sapien, quis ultrices erat ultrices quis. Nam vel ex
-            ut metus congue vehicula. Vivamus commodo sem mauris, ullamcorper
-            imperdiet diam pretium in. Sed vitae neque imperdiet quam dictum
-            ornare non vitae arcu. Donec ligula massa, placerat ut gravida non,
-            venenatis in elit. Suspendisse nec ante imperdiet arcu ornare
-            convallis et eget ipsum. Phasellus lorem nisi, volutpat vitae turpis
-            et, egestas vulputate nulla. Aenean quis leo at ante rhoncus
-            volutpat. Nam fringilla bibendum neque eu luctus. Sed eget laoreet
-            est. Praesent pulvinar pharetra ante, non pellentesque mauris
-            aliquam ut. Curabitur vel lorem orci. Nunc finibus tempor arcu,
-            molestie vehicula nibh vestibulum eu.
-        </p>
+        <ul class="list-disc list-inside text-gray-900">
+            <li class="mb-3">Use the <strong>Color</strong> setting to select your base color.</li>
+            <li class="mb-3">Use the <strong>Pattern</strong> column on the left to select your background pattern.</li>
+            <li class="mb-3">Use the <strong>Overlay</strong> column on the right to select your background overlay filter.</li>
+            <li class="mb-3">The <strong>Invert</strong> toggle switch inverts the pattern and overlay colors.</li>
+            <li class="mb-3">Adjust your chosen pattern with the <strong>Pattern Intensity</strong> setting.</li>
+            <li class="mb-3">Adjust your chosen overlay filter with the <strong>Noise</strong> setting.</li>
+            <li class="mb-3">Ready to use your background image? Click the <strong>Download image</strong> button to download a 150 x 150 PNG image.</li>
+            <li class="mb-3">Click the <strong>@2x</strong> button to download a 300 x 300 PNG version.</li>
+            <li class="mb-3">Use the Saved Steps section to take a snapshot of your settings. Click the + icon to take a snapshot; a pattern image will be added to the Saved Steps section. 
+            Click on the pattern image to load the saved settings. Hover over the pattern image and click the remove icon to remove the snapshot.</li>
+        </ul>
     </div>
 </template>
 
