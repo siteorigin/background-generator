@@ -1,7 +1,7 @@
 <template>
     <div class="px-5 sm:px-8 py-7 shadow-lg">
         <h2 class="text-sm text-gray-900 font-medium uppercase mb-1">Saved steps</h2>
-        <div class="flex flex-no-wrap overflow-x-auto items-center space-x-3 py-2.5">
+        <div class="flex flex-no-wrap overflow-x-auto items-center space-x-3 pt-3 pb-2.5">
             <button
                 class="focus:outline-none w-12 h-12 bg-blue-200 border border-blue-200 rounded-lg flex items-center justify-center flex-shrink-0"
                 @click="savePattern"
