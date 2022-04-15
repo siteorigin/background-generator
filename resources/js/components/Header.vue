@@ -12,10 +12,6 @@
                 class="relative transition duration-200 text-gray-900 font-medium text-sm flex items-center leading-none"
                 @click.prevent="openHelpModal"
             >
-                <img src="/images/help-img.jpg" class="mr-3 h-12 w-16 rounded-lg object-cover">
-                <span class="flex items-center justify-center absolute -bottom-3 left-5 bg-blue-200 rounded-full w-6 h-6">
-                    <svg width="7" height="8" viewBox="0 0 7 8" fill="none"><path id="Triangle" d="M6.19995 4.0999L-4.86374e-05 7.7999L-4.86374e-05 0.399902L6.19995 4.0999Z" fill="white"/></svg>
-                </span>
                 Help
             </a>
         </div>
