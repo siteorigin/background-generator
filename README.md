@@ -225,8 +225,6 @@ Thank you to everyone who has used and supported the Background Generator over t
 
 The pattern library includes designs originally released under Creative Commons by [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/), providing a rich collection of high-quality textures and backgrounds.
 
-Special thanks to the SiteOrigin team for their commitment to open source and for making this tool freely available to everyone.
-
 ---
 
 Made with ❤️ by [SiteOrigin](https://siteorigin.com)
